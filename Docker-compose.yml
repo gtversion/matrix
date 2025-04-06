@@ -19,6 +19,6 @@ services:
       - "27017:27017"  # Прокидываем стандартный порт MongoDB
     volumes:
       - mongodb-data:/data/db  # Монтируем том для данных, чтобы сохранять их на диске
-
+    container_name: mongodb-container
 volumes:
   mongodb-data:  # Создаём том для хранения данных MongoDB
