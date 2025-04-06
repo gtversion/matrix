@@ -7,5 +7,5 @@ COPY index.php /var/www/html/
 # Устанавливаем необходимые расширения PHP, если нужно
 # RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Открываем порт 80 для веб-сервера
+# Открываем в контейнере порт 80 для веб-сервера
 EXPOSE 80
