@@ -1,4 +1,7 @@
+version: '3.8'
+
 services:
+  # Сервис для PHP и Apache
   php-apache:
     build: .
     restart: always
@@ -7,3 +10,17 @@ services:
     volumes:
       - ./index.php:/var/www/html/index.php
     container_name: php-apache-container
+    depends_on:
+      - mongodb  # Обозначает, что сервис php-apache зависит от MongoDB
+
+  # Сервис для MongoDB
+  mongodb:
+    image: mongo:latest  # Используем официальный образ MongoDB
+    restart: always
+    ports:
+      - "27017:27017"  # Прокидываем стандартный порт MongoDB
+    volumes:
+      - mongodb-data:/data/db  # Монтируем том для данных, чтобы сохранять их на диске
+
+volumes:
+  mongodb-data:  # Создаём том для хранения данных MongoDB
